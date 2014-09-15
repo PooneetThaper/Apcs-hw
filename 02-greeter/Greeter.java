@@ -2,9 +2,13 @@
 import java.io.*;
 import java.util.*;
 
-
 public class Greeter {
-    public static void main(String[] args){
-	System.out.println("Greetings");
+    public void greet() {
+	System.out.println("Hello world!");
+	ungreet();
+    }
+
+    private void ungreet() {
+	System.out.println("I'm out.");
     }
 }
