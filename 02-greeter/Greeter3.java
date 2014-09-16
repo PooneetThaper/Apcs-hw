@@ -1,9 +1,11 @@
-<<<<<<< HEAD
 
 import java.io.*;
 import java.util.*;
 
 public class Greeter {
+    /* Attributes go here
+       we call them instance variables*/
+    public string greeting=new String("Hello world!");
     public void greet() {
 	System.out.println("Hello world!");
 	ungreet();
@@ -25,7 +27,7 @@ public class Greeter {
 	ungreet();
     }
 
-    private void ungreet() {
+    public void ungreet() {
 	System.out.println("I'm out.");
     }
 }
