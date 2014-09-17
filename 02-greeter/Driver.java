@@ -1,8 +1,10 @@
 public class Driver {
     public static void main(String[] args){
-	Greeter g;
-	g = new Greeter();
-	System.out.println(g);
-	g.greet();
+	Greeter g1=new Greeter();
+	Greeter g2=new Greeter();
+	g1.greet();
+	g2.greet();
+	g1.setGreeting("Sup!");
+	g2.greet();
     }
 }

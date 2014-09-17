@@ -1,32 +1,15 @@
-<<<<<<< HEAD
-
-import java.io.*;
-import java.util.*;
-
 public class Greeter {
-    public void greet() {
-	System.out.println("Hello world!");
-	ungreet();
+    //instance variables are almost always private
+    //we access them with "accessor methods" get and set
+    private String greeting= new String ("Hello world");
+    public void setGreeting(String s) {
+	greeting =s;
     }
-
-    private void ungreet() {
-	System.out.println("I'm out.");
+    public void greet() {
+	//String greeting=new String("Sup");
+	System.out.println(greeting);
+    }
+    public void ungreet() {
+	System.out.println(greeting);
     }
 }
-=======
-
-import java.io.*;
-import java.util.*;
-
-public class Greeter {
-    public void greet() {
-	String s=new String ("Hello world");
-	System.out.println("Hello world!");
-	ungreet();
-    }
-
-    private void ungreet() {
-	System.out.println("I'm out.");
-    }
-}
-
