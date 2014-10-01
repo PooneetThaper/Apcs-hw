@@ -1,3 +1,5 @@
+//working
+
 public class Loops{
     public String frontTimes(String str, int n) {
 	String s="";
