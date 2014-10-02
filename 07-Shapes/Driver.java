@@ -7,10 +7,15 @@ public class Driver {
 	System.out.println(s.box(4,5));
 
 	System.out.println(s.tri1(5));
-	System.out.println(s.tri1(12));
-
+	
 	System.out.println(s.tri2(5));
-	System.out.println(s.tri2(12));
+	
+	System.out.println(s.tri3(5));
+	
+	System.out.println(s.tri4(5));
 
+	System.out.println(s.diamond(9));
+	System.out.println(s.diamond(10));
+	
     }
 }
