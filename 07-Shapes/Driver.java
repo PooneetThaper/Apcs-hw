@@ -17,5 +17,8 @@ public class Driver {
 	System.out.println(s.diamond(9));
 	System.out.println(s.diamond(10));
 	
+	System.out.println(s.frame(5,6));
+	System.out.println(s.frame(30,50));
+	
     }
 }

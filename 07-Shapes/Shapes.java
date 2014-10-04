@@ -192,4 +192,23 @@ public class Shapes {
 	}
 	return s;
     }
+
+    public String frame(int r, int c){
+	String s="";
+	for (int row=0;row<r;row=row+1){
+	    for (int col=c;col>0;col=col-1){
+		if (row==0 || row==r-1){
+		    s=s+"*";
+		}else{
+		    if (col==c || col==1){
+			s=s+"*";
+		    }else{
+			s=s+" ";
+		    }
+		}
+	    }
+	    s=s+"\n";
+	}
+	return s;
+    }
 }
