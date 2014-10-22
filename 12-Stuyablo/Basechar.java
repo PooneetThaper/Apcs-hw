@@ -75,10 +75,6 @@ public class Basechar {
 	    this.Sandwich(other);
 	    this.Encounter(other);
 	}
-
-	for (int i = 0; i < 20; i++) {
-	    System.out.print("\f");
-	}
         
     }
     public void Choices (Basechar other){
