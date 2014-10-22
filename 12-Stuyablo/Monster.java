@@ -1,5 +1,5 @@
 public class Monster extends Basechar{
-    int healthboost=(int)Math.ceil(Math.random()*400);
+    int healthboost=(int)Math.ceil(Math.random()*500)+200;
     public Monster (String n) {
 	super(n);
 	this.health = this.health + healthboost;

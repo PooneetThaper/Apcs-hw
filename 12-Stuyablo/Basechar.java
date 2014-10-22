@@ -9,9 +9,9 @@ public class Basechar {
 
     public int health = 100;
     public int attack = 20;
-    public int Sandwich = 1;
+    public int Sandwich = 4;
     public int Level = 1;
-    public int Potion = 3;
+    public int Potion = 1;
     //when a attacks b, b will be hit with this much damage as (a's attack - b's defense)
     int defense = 10; //let that be the number of points of health points they save
     private String name = "default name";
