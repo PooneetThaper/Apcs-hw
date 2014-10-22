@@ -8,11 +8,12 @@ public class Driver{
 	    Scanner scannerp1= new Scanner(System.in);
 	    String p1= scannerp1.nextLine()+" the Boss";
 	    Warrior yolo= new Warrior(p1);
+	    System.out.println("");
 	    System.out.println("Please enter the name of your enemy:");
 	    Scanner scannerai= new Scanner(System.in);
 	    String ai= scannerai.nextLine();
 	    Monster aslo= new Monster(ai);
-	    yolo.Encounter(aslo);
+	    yolo.Sighting(aslo);
 		
 	}
 }
