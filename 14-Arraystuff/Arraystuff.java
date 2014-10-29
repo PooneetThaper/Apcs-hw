@@ -5,7 +5,7 @@ public class Arraystuff{
 
     public Arraystuff(){	
 	for(int i=0; i<n.length;i++){
-	    n[i]=i;
+	    n[i]=(int)Math.ceil(Math.random()*10);
 	}
     }
     
@@ -35,6 +35,16 @@ public class Arraystuff{
 	    }
 	}
 	return max;
+    }
+
+    public int count(int c){
+	int count=0;
+	for(int i=0;i<n.length;i++){
+	    if (n[i]==c){
+		count=count+1;
+	    }
+	}
+	return count;
     }
 
     //Coding Bat
@@ -71,4 +81,28 @@ public class Arraystuff{
     }
 
     
+}
+
+public int[] tenR`un(int[] nums) {
+    int active=0;
+    int ten=0;
+    for(int i=0;i<nums.length;i++){
+	if (nums[i]%10==0){ 
+	    ten=nums[i];
+	    active=1;
+	}
+	else{
+	    if (active==1){
+		if (nums[i]%10!=0) nums[i]=ten;
+	    }
+	}
+  }
+    return nums;
+}
+
+public boolean tripleUp(int[] nums) {
+  for(int i=0;i<nums.length-2;i++){
+   if (nums[i]==nums[i+1]-1 && nums[i+1]==nums[i+2]-1) return true;
+  }
+  return false;
 }
