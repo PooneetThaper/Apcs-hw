@@ -80,29 +80,58 @@ public class Arraystuff{
 	else return false;
     }
 
-    
-}
 
-public int[] tenR`un(int[] nums) {
-    int active=0;
-    int ten=0;
-    for(int i=0;i<nums.length;i++){
-	if (nums[i]%10==0){ 
-	    ten=nums[i];
-	    active=1;
-	}
-	else{
-	    if (active==1){
-		if (nums[i]%10!=0) nums[i]=ten;
+    public int[] tenR`un(int[] nums) {
+	int active=0;
+	int ten=0;
+	for(int i=0;i<nums.length;i++){
+	    if (nums[i]%10==0){ 
+		ten=nums[i];
+		active=1;
+	    }
+	    else{
+		if (active==1){
+		    if (nums[i]%10!=0) nums[i]=ten;
+		}
 	    }
 	}
-  }
-    return nums;
-}
+	return nums;
+    }
+    
+    public boolean tripleUp(int[] nums) {
+	for(int i=0;i<nums.length-2;i++){
+	    if (nums[i]==nums[i+1]-1 && nums[i+1]==nums[i+2]-1) return true;
+	}
+	return false;
+    }
+    
+    public boolean canBalance(int[] nums) {
+	int Before = 0;
+	int After = 0;
+	for (int i = 0; i < nums.length; i++) {
+	    After = After + nums[i];
+	}
+	for (int i = 0; i < nums.length; i++) {
+	    if (Before == After) {
+		return true;
+	    } else {
+		Before = Before + nums[i];
+		After = After - nums[i];
+	    }
+	}
+	return false;
+    }
 
-public boolean tripleUp(int[] nums) {
-  for(int i=0;i<nums.length-2;i++){
-   if (nums[i]==nums[i+1]-1 && nums[i+1]==nums[i+2]-1) return true;
-  }
-  return false;
+    public int[] seriesUp(int n) {
+	int k=n*(n+1)/2;
+	int[] f=new int[k];
+	int place=0;
+	for (int i=0;i<n;i++){
+	    for (int a=1;a<=i+1;a++){
+		f[place]=a;
+		place=place+1;
+	    }
+	}
+	return f;
+    }
 }
