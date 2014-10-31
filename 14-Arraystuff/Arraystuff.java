@@ -134,4 +134,28 @@ public class Arraystuff{
 	}
 	return f;
     }
+
+    //doesnt work
+    public int maxMirror(int[] nums) {
+	int k=0;
+	boolean active=false;
+	for(int i=0;i<nums.length;i++){
+	    for(int h=nums.length-1;h>0;h=h-1){
+		if (active){
+		    if (nums[h]==nums[i]){
+			k=k+1;
+		    }
+		    else{
+			return k;
+		    }
+		}
+		if (nums[h]==nums[i]){
+		    k=k+1;
+		    active=true;
+		    break;
+		}
+	    }
+	}
+	return k;
+    }
 }
