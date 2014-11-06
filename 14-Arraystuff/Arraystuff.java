@@ -44,7 +44,7 @@ public class Arraystuff{
     }
 
     public int maxVal(int[] n){
-	int max=0;
+	int max=n[0];
 	for(int i=0;i<n.length;i++){
 	    if (n[i]>max){
 		max=n[i];
@@ -178,9 +178,8 @@ public class Arraystuff{
     public int mode(int[] n){
 	int[] f= new int[maxVal(n)+1];
 	for(int i=0; i<n.length;i++){
-	    f[i]++;
+	    f[n[i]]+=1;
 	}
-	int x=find(maxVal(f));
-	return x;
+	return Arrays.asList(f).indexOf(maxVal(f));
     }
 }
