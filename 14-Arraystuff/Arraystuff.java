@@ -1,7 +1,23 @@
 import java.util.*;
 
 public class Arraystuff{
-    int[] n=new int[10];
+    public int[] n=new int[10];
+
+    public static void main(String[] args){
+	int r1=(int)Math.ceil(Math.random()*10);
+	int r2=(int)Math.ceil(Math.random()*10);
+	Arraystuff a = new Arraystuff();
+	System.out.println("Array:");
+	System.out.println(a.toString());
+	System.out.println("Mode:");
+	System.out.println(a.mode(a.n));
+	System.out.println("The location of "+Integer.toString(r1)+" in the Array is:");
+	System.out.println(a.find(r1));
+	System.out.println("The max value in the array is:");
+	System.out.println(a.maxVal(a.n));
+	System.out.println("The frequency  of "+Integer.toString(r2)+" in the Array is:");
+	System.out.println(a.count(r2));
+    }
 
     public Arraystuff(){	
 	for(int i=0; i<n.length;i++){
@@ -27,7 +43,7 @@ public class Arraystuff{
 	return -1;
     }
 
-    public int maxVal(){
+    public int maxVal(int[] n){
 	int max=0;
 	for(int i=0;i<n.length;i++){
 	    if (n[i]>max){
@@ -81,7 +97,7 @@ public class Arraystuff{
     }
 
 
-    public int[] tenR`un(int[] nums) {
+    public int[] tenRun(int[] nums) {
 	int active=0;
 	int ten=0;
 	for(int i=0;i<nums.length;i++){
@@ -157,5 +173,14 @@ public class Arraystuff{
 	    }
 	}
 	return k;
+    }
+
+    public int mode(int[] n){
+	int[] f= new int[maxVal(n)+1];
+	for(int i=0; i<n.length;i++){
+	    f[i]++;
+	}
+	int x=find(maxVal(f));
+	return x;
     }
 }
