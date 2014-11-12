@@ -45,7 +45,7 @@ public class Sarray{
     }
     
     public void add(int index,int i){
-	//assuming index<data.length 
+	try{//assuming index<data.length 
 	if (last<data.length && index<=last){
 	    for(int k=last;k>index;k--){
 		data[k]=data[k-1];
@@ -85,6 +85,10 @@ public class Sarray{
 	    temp[index]=i;
 	    data=temp;
 	    last++;
+	}
+	}
+	catch(Exception e){
+	    System.out.println("uh oh");
 	}
     }
 
@@ -146,6 +150,8 @@ public class Sarray{
 	System.out.println("The value at index 7 will be changed to 42 from its current value "+a.set(7,42));
 	a.test();
 	System.out.println("The value at index 2 (currently equal to "+a.remove(2)+") will be deleted");
+	a.test();
+	a.add(600,1);
 	a.test();
     }
 }
