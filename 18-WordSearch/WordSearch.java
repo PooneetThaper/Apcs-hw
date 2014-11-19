@@ -53,7 +53,7 @@ public class WordSearch{
 	    }
 	}
 	else{
-	    String error= "Can't add "+w+" at ["+Integer.toString(row)+"][";
+	    String error= "Can't add ("+w+") at ["+Integer.toString(row)+"][";
 	    error=error+Integer.toString(col)+"]";
 	    System.out.println(error);
 	}
@@ -64,7 +64,8 @@ public class WordSearch{
 	ws.addWordH("apple",7,2);
 	ws.addWordH("set",7,5);
 	ws.addWordH("letters",7,5);
-	ws.addWordH("banana",6,2);
+	ws.addWordH("banana",22,2);
+	ws.addWordH("helloworld",15,12);
 	ws.addWordH("superbanana",0,25);
 
 	System.out.println(ws.toString());
