@@ -19,11 +19,24 @@ public class Mixer{
 	for(int i=(int)Math.ceil(Math.random()*10)+10;i>0;i--){
 	    int rand1=(int)Math.floor(Math.random()*al.size());
 	    int rand2=(int)Math.floor(Math.random()*al.size());
-	    int val=al.get(rand1);
-	    al.remove(rand1);
+	    int val=al.remove(rand1);
 	    al.add(rand2, val);
 	}
-	System.out.println(al);
+
+    }
+    // "Hidden complexity" because we called a Java class which will do
+    //more things that you tell it to
+    //ex: remove will have to remove and shift everything after over
+
+    public void swap(){
+	for(int i=(int)Math.ceil(Math.random()*10)+10;i>0;i--){
+	    int rand1=(int)Math.floor(Math.random()*al.size());
+	    int rand2=(int)Math.floor(Math.random()*al.size());
+	    int temp=al.get(rand1);
+	    al.set(rand1, al.get(rand2));
+	    al.set(rand2, temp);
+	}
+	
     }
 
 //__________________Array Stuff_______________________
@@ -65,6 +78,10 @@ public class Mixer{
 	System.out.println("ArrayList: ");
 	System.out.println(m.al);
 	m.Mixarraylist();
+	System.out.println(al);
+	System.out.println("");
+	m.swap();
+	System.out.println(al);
 	System.out.println("");
 	System.out.println("Array: ");
 	m.arraytester(m.a);
