@@ -22,51 +22,72 @@ public class WordSearch{
 	return s;
     }
 
-    public boolean checkH(String w, int row, int col){
-	boolean wegood=true;
+
+    //since horizontal and vertical are very similar,
+    //I put in 1 check and 1 horizontal that works with a new
+    //input string o to work on the right orientation
+
+    public boolean check(String w, int row, int col, String o){
+	boolean alright=true;
 	int r=row,c=col;
 	try{
 	    for (int i=0;i<w.length();i++){
 		if (board[r][c]!='.') {
 		    if(board[r][c]!=w.charAt(i)){
-			wegood=false;
+			alright=false;
 		    }
 		}
-		c++;
+		if (o.equals("H"))//horizontal
+		    c++;
+		if (o.equals("V"))//vertical
+		    r++;
+	        
 	    }
-	    if (wegood){
-		if (col+w.length()>board[0].length)
-		    wegood=!wegood;
-	    }
+	    
 	}catch (ArrayIndexOutOfBoundsException e){
-	    wegood=false;
+	    alright=false;
 	}
-	return wegood;
+	if (alright){
+	    if (o.equals("H")){
+		if(col+w.length()>board.length)	alright=!alright;
+	    }
+	    if (o.equals("V")){
+		if(row+w.length()>board.length)	alright=!alright;
+	    }	    
+	}
+	return alright;
     }
 
-    public void addWordH(String w, int row, int col){
+    public void addWord(String w, int row, int col, String o){
 	int r=row,c=col;
-	if(checkH(w,r,c)){
+	if(check(w,r,c,o)){
 	    for (int i=0;i<w.length();i++){
 	        board[r][c]=w.charAt(i);
-		c++;
+		if (o.equals("H"))
+		    c++;
+		else r++;
 	    }
 	}
 	else{
-	    String error= "Can't add ("+w+") at ["+Integer.toString(row)+"][";
+	    String error= "Can't add ("+w+") vertically at ["+Integer.toString(row)+"][";
 	    error=error+Integer.toString(col)+"]";
 	    System.out.println(error);
 	}
     }
 
+
     public static void main(String[] args){
 	WordSearch ws=new WordSearch(30,30);
-	ws.addWordH("apple",7,2);
-	ws.addWordH("set",7,5);
-	ws.addWordH("letters",7,5);
-	ws.addWordH("banana",22,2);
-	ws.addWordH("helloworld",15,12);
-	ws.addWordH("superbanana",0,25);
+	ws.addWord("apple",7,2,"H");
+	ws.addWord("set",7,5,"H");
+	ws.addWord("letters",7,5,"H");
+	ws.addWord("banana",22,2,"H");
+	ws.addWord("helloworld",15,12,"H");
+	ws.addWord("superbanana",0,25,"H");
+	ws.addWord("superbanana",0,25,"V");
+	ws.addWord("word",15,17,"V");
+	ws.addWord("amazing",25,9,"V");
+	ws.addWord("applesauce",16,5,"V");
 
 	System.out.println(ws.toString());
     }
