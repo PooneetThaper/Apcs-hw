@@ -1,5 +1,6 @@
 public class WordSearch{
     private char[][] board;
+    private ArrayList<String> Words= new ArrayList<String>;
 
     public WordSearch(int r,int c){
 	board=new char[r][c];
@@ -8,6 +9,7 @@ public class WordSearch{
 		board[i][j]='.';
 	    }
 	}
+	Words.add("Words:")
     }
 
 
@@ -16,6 +18,10 @@ public class WordSearch{
 	for (int i=0;i<board.length;i++){
 	    for (int j=0; j<board[i].length;j++){
 		s=s+board[i][j];
+	    }
+	    if (i<=Words.size){
+	    	s=s+"     ";
+	    	s=s+Words.get(i);
 	    }
 	    s=s+"\n";
 	}
@@ -69,6 +75,7 @@ public class WordSearch{
 	if(o%2==0){
 	    int r=row,c=col;
 	    if(check(w,r,c,o)){
+	    	Words.add(w);
 		for (int i=0;i<w.length();i++){
 		    board[r][c]=w.charAt(i);
 		    if (o==0)//horizontal
