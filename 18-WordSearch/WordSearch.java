@@ -15,25 +15,29 @@ public class WordSearch{
 	Words.add("Words:");
     }
 
-
     public String toString(){
+	for (int i=0;i<board.length;i++){
+	    for (int j=0;j<board[i].length;j++){
+		if (board[i][j]=='.'){
+		    char c = (char)(Math.floor(Math.random()*26) + 'a');
+		    board[i][j]=c;
+		}
+	    }
+	}
+	System.out.println("");
 	String s="";
 	for (int i=0;i<board.length;i++){
-	    for (int j=0; j<board[i].length;j++){
-		s=s+board[i][j];
+	    for (int j=0; j<board[i].length;j++){		
+		 s=s+board[i][j];
 	    }
 	    if (i<Words.size()){
 	    	s=s+"     ";
+		if (i>0) s=s+"-";
 	    	s=s+Words.get(i);
 	    }
 	    s=s+"\n";
 	}
 	return s;
-    }
-
-    public void ReverseWord(String w,int r,int c,int o){
-	String rev=new StringBuilder(w).reverse().toString();
-	addWord(rev,r,c,o-1);
     }
 
     //since horizontal and vertical are very similar,
@@ -50,17 +54,25 @@ public class WordSearch{
 			alright=false;
 		    }
 		}
-		if (o==0||o==1)//horizontal
-		    c++;
-		if (o==2||o==3)//vertical
-		    r++;
-		if (o==4||o==5){//diagonal with negative slope
+		if (o==0) c++;
+		if (o==1) c--;
+		if (o==2) r++;
+		if (o==3) r--;
+		if (o==4){//diagonal with negative slope
 		    c++;
 		    r++;
 		}
-		if (o==6||o==7){//diagonal with positive slope
+		if (o==5){
+		    c--;
+		    r--;
+		}
+		if (o==6){//diagonal with positive slope
 		    c--;
 		    r++;
+		}
+		if (o==7){
+		    c++;
+		    r--;
 		}
 		
 	    }
@@ -75,50 +87,35 @@ public class WordSearch{
 	//int o          0   1    2   3    4   5    6   7
 	//orientation    H   H    V   V    ND  ND   PD  PD
 	//reverse?       no  yes  no  yes  no  yes  no  yes
-	if(o%2==0){
-	    int r=row,c=col;
-	    if(check(w,r,c,o)){
-	    	Words.add(w);
-		for (int i=0;i<w.length();i++){
-		    board[r][c]=w.charAt(i);
-		    if (o==0)//horizontal
-			c++;
-		    if (o==2)//vertical
-			r++;
+
+	int r=row,c=col;
+	if(check(w,r,c,o)){
+	    Words.add(w);
+	    for (int i=0;i<w.length();i++){
+		board[r][c]=w.charAt(i);
+		    if (o==0) c++;
+		    if (o==1) c--;
+		    if (o==2) r++;
+		    if (o==3) r--;
 		    if (o==4){//diagonal with negative slope
 			c++;
 			r++;
+		    }
+		    if (o==5){
+			c--;
+			r--;
 		    }
 		    if (o==6){//diagonal with positive slope
 			c--;
 			r++;
 		    }
+		    if (o==7){
+			c++;
+			r--;
+		    }
 		}
 	    }
-	    /*
-	    else{
-		String or="";
-		if (o==0){
-		    or= "horizontally";
-		}
-		if (o==2){
-		    or= "vertically";
-		}
-		if (o==4){//diagonal with negative slope
-		    or= "forward diagonally";
-		}
-		if (o==6){//diagonal with positive slope
-		    or= "reverse diagonally";
-		}
-		String error= "Can't add ("+w+") "+or+" at ["+Integer.toString(row)+"][";
-		error=error+Integer.toString(col)+"]";
-		System.out.println(error);
-	    }
-	    */
-	}
-	if (o%2==1){
-	    ReverseWord(w,row,col,o);
-	}
+	   
     }
 
     public boolean addWord(String w){
@@ -139,9 +136,17 @@ public class WordSearch{
 	}
 	return worked;
     }
-
+    /*
+    public void ReverseWord(String w,int r,int c,int o){
+	String rev=new StringBuilder(w).reverse().toString();
+	addWord(rev,r,c,o-1);
+    }
+    */
     public static void main(String[] args){
 	WordSearch ws=new WordSearch(30,30);
+	//Scanner s=new Scanner(
+        
+	/*
 	ws.addWord("apple",7,2,0);
 	ws.addWord("letters",7,5,0);
 	ws.addWord("banana",22,2,4);
@@ -155,9 +160,8 @@ public class WordSearch{
 	ws.addWord("set");
 	ws.addWord("hatmaster");
 	ws.addWord("computer");
-	ws.addWord("computer");
 	ws.addWord("superman");
-
+	*/
 	System.out.println(ws.toString());
     }
 	
