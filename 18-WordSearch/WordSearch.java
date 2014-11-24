@@ -1,6 +1,9 @@
+import java.io.*;
+import java.util.*;
+
 public class WordSearch{
     private char[][] board;
-    private ArrayList<String> Words= new ArrayList<String>;
+    private ArrayList<String> Words= new ArrayList<String>();
 
     public WordSearch(int r,int c){
 	board=new char[r][c];
@@ -19,7 +22,7 @@ public class WordSearch{
 	    for (int j=0; j<board[i].length;j++){
 		s=s+board[i][j];
 	    }
-	    if (i<=Words.size){
+	    if (i<Words.size()){
 	    	s=s+"     ";
 	    	s=s+Words.get(i);
 	    }
