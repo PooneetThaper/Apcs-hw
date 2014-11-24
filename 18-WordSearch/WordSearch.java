@@ -9,7 +9,7 @@ public class WordSearch{
 		board[i][j]='.';
 	    }
 	}
-	Words.add("Words:")
+	Words.add("Words:");
     }
 
 
