@@ -143,24 +143,32 @@ public class WordSearch{
 	}
 	return worked;
     }
-    /*
-    public void ReverseWord(String w,int r,int c,int o){
-	String rev=new StringBuilder(w).reverse().toString();
-	addWord(rev,r,c,o-1);
+
+    public void buildPuzzle(int numwords){
+	int i=0;
+	while (numwords>0){
+	    i=(int)Math.floor(Math.random()*Words.size());
+	    if (addWord(Words.remove(i))){
+		numwords--;
+	    }
+	}
     }
-    */
+    
     public static void main(String[] args){
 	WordSearch ws=new WordSearch(30,30);
 	Scanner sc = null;
+	
 	try {
-	    sc = new Scanner(new File("words.txt"));
+	    sc = new Scanner(new File("Words.txt"));
 	} catch (Exception e) {
 	    System.out.println("Can't open file");
 	    System.exit(0);
 	}
 	while (sc.hasNext()) {
-	    ws.addWord(sc.next());
+	    String s=sc.next();
+	    ws.Words.add(s);
 	}
+	ws.buildPuzzle(20);
 	System.out.println(ws.toString());
     }
 	
