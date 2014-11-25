@@ -1,0 +1,1 @@
+Have the wordsearch complete with the file reading and the filling in random characters. Working on extras like having a list of input words, and solving the puzzle.

@@ -27,7 +27,7 @@ public class WordSearch{
 	System.out.println("");
 	String s="";
 	for (int i=0;i<board.length;i++){
-	    for (int j=0; j<board[i].length;j++){		
+	    for (int j=0;j<board[i].length;j++){		
 		 s=s+board[i][j];
 	    }
 	    if (i<Words.size()){
@@ -36,6 +36,13 @@ public class WordSearch{
 	    	s=s+Words.get(i);
 	    }
 	    s=s+"\n";
+	}
+	if (Words.size()>board.length) {
+	    for (int k=board.length;k<Words.size();k++){
+		s=s+"                                   -";
+		s=s+Words.get(k);
+		s=s+"\n";
+	    } 
 	}
 	return s;
     }
@@ -144,24 +151,16 @@ public class WordSearch{
     */
     public static void main(String[] args){
 	WordSearch ws=new WordSearch(30,30);
-	//Scanner s=new Scanner(
-        
-	/*
-	ws.addWord("apple",7,2,0);
-	ws.addWord("letters",7,5,0);
-	ws.addWord("banana",22,2,4);
-	ws.addWord("helloworld",15,12,0);
-	ws.addWord("justice",0,25,6);
-	
-	ws.addWord("amazing");
-	ws.addWord("applesauce");
-	ws.addWord("justice");
-	ws.addWord("pickle");
-	ws.addWord("set");
-	ws.addWord("hatmaster");
-	ws.addWord("computer");
-	ws.addWord("superman");
-	*/
+	Scanner sc = null;
+	try {
+	    sc = new Scanner(new File("words.txt"));
+	} catch (Exception e) {
+	    System.out.println("Can't open file");
+	    System.exit(0);
+	}
+	while (sc.hasNext()) {
+	    ws.addWord(sc.next());
+	}
 	System.out.println(ws.toString());
     }
 	
