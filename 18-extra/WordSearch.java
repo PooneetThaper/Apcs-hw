@@ -377,7 +377,7 @@ public class WordSearch{
     
     public static void main(String[] args){
 	WordSearch ws=new WordSearch(10,10);
-	ws.buildPuzzle(10);
+	ws.buildPuzzle(9);
 	System.out.println("");
 	ws.play();
     }
