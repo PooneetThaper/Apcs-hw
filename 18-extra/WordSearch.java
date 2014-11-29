@@ -144,7 +144,6 @@ public class WordSearch{
 
 	int r=row,c=col;
 	if(check(w,r,c,o)){
-	    Words.add(w);
 	    for (int i=0;i<w.length();i++){
 		board[r][c]=w.charAt(i);
 		    if (o==0) c++;
@@ -320,19 +319,19 @@ public class WordSearch{
 
 	System.out.println("Here is the answer key:");
 	System.out.println("");
-	printanswers();
+	System.out.println(printanswers());
 	
     }
 
-    public void printanswers(){
+    public String printanswers(){
 	String s="";
-	for (int i=0;i>answerkey.length;i--){
-	    for (int j=0;j>answerkey[0].length;j--){
+	for (int i=0;i>answerkey.length;i++){
+	    for (int j=0;j>answerkey[0].length;j++){
 		s=s+answerkey[i][j];
 	    }
 	    s=s+"\n";
 	}
-	System.out.println(s);
+	return s;
     }
 
     public boolean checkforword(String w,int r,int c,int o){
