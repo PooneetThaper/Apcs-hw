@@ -52,6 +52,17 @@ public class SuperArray{
 	    
 	}
     }
+
+    public void isort() {
+        for (int j = 1; j < data.length; j++) {
+            String newval = data[j];
+	    int i;
+	    for (i = j; i > 0 && data[i].compareTo(newval) > 0; i--) {
+                data[i] = data[i-1];
+            }
+            data[i] = newval;
+        }
+    }
 	/*
 	  public void add(int index,int i){
 	try{//assuming index<data.length 
