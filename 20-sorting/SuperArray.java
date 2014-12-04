@@ -26,12 +26,7 @@ public class SuperArray{
 	    return true;
 	}
 	else if (last<data.length){
-	    int i;
-	    for (i=last; i>0 && s.compareTo(data[i-1])<0;i--){
-		data[i]=data[i-1];
-	    }
-	    data[i]=s;
-	    last++;
+	    data[last]=s;
 	    return true;
 	}
 	else{
@@ -40,16 +35,9 @@ public class SuperArray{
 		temp[k]=data[k];
 	    }
 	    data=temp;
-	    
-	    int i;
-	    for (i=last; i>0 && s.compareTo(data[i-1])<0;i--){
-		data[i]=data[i-1];
-	    }
-	    data[i]=s;
-
+	    data[last]=s;
 	    last++;
 	    return true;
-	    
 	}
     }
 
@@ -63,6 +51,49 @@ public class SuperArray{
             data[i] = newval;
         }
     }
+    /*
+      insertion sort
+      loops to each value and checks if it belongs 
+      anywhere before where it is
+      5|2|8|6|4|9
+      2|5|8|6|4|9
+      2|5|6|8|4|9
+      2|4|5|6|8|9
+     */
+
+    public void ssort(){
+	for (int i=0;i<data.length; i++){
+	    String min=data[i];
+	    int index=i;
+	    for (int j=i;j<data.length;j++){
+		if (min.compareTo(data[j])>0){
+		    min=data[j];
+		    index=j;
+		}
+	    }
+	    data[index]=data[i];
+	    data[i]=min;
+	}
+    }
+
+    /*
+      selection sort
+      i=0
+      look at the array from i to end
+      find min
+      swap min and element i
+      i=i+1
+
+      1|5|47|9|21|69|420|3
+      1|5|47|9|21|69|420|3
+      1|3|47|9|21|69|420|5
+      1|3|5|9|21|69|420|47
+      1|3|5|9|21|69|420|47
+      1|3|5|9|21|69|420|47
+      1|3|5|9|21|47|420|69
+      1|3|5|9|21|47|69|420
+     */
+    
 	/*
 	  public void add(int index,int i){
 	try{//assuming index<data.length 
@@ -139,7 +170,6 @@ public class SuperArray{
     */
     public static void main(String[] args){
 	SuperArray a=new SuperArray();
-	a.test();
 	a.add("banana");
 	a.test();
 	a.add("apple");
@@ -155,6 +185,8 @@ public class SuperArray{
 	a.add("car");
 	a.test();
 	a.add("cat");
+	a.test();
+	a.ssort();
 	a.test();
     }
 }
