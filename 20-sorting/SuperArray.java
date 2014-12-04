@@ -26,18 +26,11 @@ public class SuperArray{
 	    return true;
 	}
 	else if (last<data.length){
-	    int index=0;
-	    for (int i=0;i<last;i++){
-		if (s.compareTo(data[i])<=0){
-		    index=i;
-		    break;
-		}
-		else index=last;
-	    }
-	    for (int i=last; i>index;i--){
+	    int i;
+	    for (i=last; i>0 && s.compareTo(data[i-1])<0;i--){
 		data[i]=data[i-1];
 	    }
-	    data[index]=s;
+	    data[i]=s;
 	    last++;
 	    return true;
 	}
@@ -46,19 +39,14 @@ public class SuperArray{
 	    for(int k=0;k<data.length;k++){
 		temp[k]=data[k];
 	    }
-	    int index=0;
-	    for (int i=0;i<last;i++){
-		if (s.compareTo(data[i])<=0){
-		    index=i;
-		    break;
-		}
-		else index=last;
-	    }
-	    for (int i=last; i>index;i--){
-		temp[i]=temp[i-1];
-	    }
-	    temp[index]=s;
 	    data=temp;
+	    
+	    int i;
+	    for (i=last; i>0 && s.compareTo(data[i-1])<0;i--){
+		data[i]=data[i-1];
+	    }
+	    data[i]=s;
+
 	    last++;
 	    return true;
 	    
