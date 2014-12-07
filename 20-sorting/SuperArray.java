@@ -43,12 +43,12 @@ public class SuperArray{
 
     public void isort() {
         for (int j = 1; j < data.length; j++) {
-            String newval = data[j];
+	    String N = data[j];
 	    int i;
-	    for (i = j; i > 0 && data[i].compareTo(newval) > 0; i--) {
-                data[i] = data[i-1];
-            }
-            data[i] = newval;
+	    for (i=j; i>0 && N.compareTo(data[i-1]) < 0; i--) {
+		data[i] = data[i-1];
+	    }
+	    data[i] = N;
         }
     }
     /*
@@ -66,9 +66,9 @@ public class SuperArray{
 	    String min=data[i];
 	    int index=i;
 	    for (int j=i;j<data.length;j++){
-		if (min.compareTo(data[j])>0){
-		    min=data[j];
-		    index=j;
+		if (min.compareTo(data[j])>0){    
+		min=data[j];
+		index=j;
 		}
 	    }
 	    data[index]=data[i];
@@ -93,97 +93,82 @@ public class SuperArray{
       1|3|5|9|21|47|420|69
       1|3|5|9|21|47|69|420
      */
-    
-	/*
-	  public void add(int index,int i){
-	try{//assuming index<data.length 
-	if (last<data.length && index<=last){
-	    for(int k=last;k>index;k--){
-		data[k]=data[k-1];
-	    }
-	    data[index]=i;
-	    last++;	
-	}
-	else if (last<data.length && (index>last && index<data.length)){
-	    if (data[data.length-1]==0){
-		for(int k=last;k>index;k--){
-		    data[k]=data[k-1];
+
+    public void bsort(){
+	for (int i=0;i<data.length;i++){
+	    for (int j=0;j<data.length-i-1;j++){
+		if(data[j].compareTo(data[j+1])>0){
+		    String temp=data[j];
+		    data[j]=data[j+1];
+		    data[j+1]=temp;
 		}
-		data[index]=i;
 	    }
-	    else{
-		int[] temp=new int[data.length+1];
-		for(int k=0;k<index;k++){
-		    temp[k]=data[k];
-		}
-		for(int k=index;k<data.length;k++){
-		    temp[k+1]=data[k];
-		}
-		temp[index]=i;
-		data=temp;
-	    }
-	    //leaves a gap of zeros for position p
-	    //last< p <index
-	}
-	else{
-	    int[] temp=new int[data.length+1];
-	    for(int k=0;k<index;k++){
-		temp[k]=data[k];
-	    }
-	    for(int k=index;k<data.length;k++){
-		temp[k+1]=data[k];
-	    }
-	    temp[index]=i;
-	    data=temp;
-	    last++;
-	}
-	}
-	catch(Exception e){
-	    System.out.println("uh oh");
 	}
     }
+    
+    /*
+      bubble sort
+      starts off at one end
+      switches a[i] and a[i+1] so that they are ordered
+      keeps doing that
+      effectively moves the max to the end
+      then you can do that again and move the second max
+      and so on
+
+      5|3|4|8|9|1|2|6
+      3|5|4|8|9|1|2|6
+      3|4|5|8|9|1|2|6
+      3|4|5|8|9|1|2|6
+      3|4|5|8|9|1|2|6
+      3|4|5|8|1|9|2|6
+      3|4|5|8|1|2|9|6
+      3|4|5|8|1|2|6|9
+
+      and then loops again doing the same thing until it through all of it.
+     */
 
     public int size(){
 	int count=0;
 	for(int i=0;i<data.length;i++){
-	    if (data[i]!=0)
+	    if (!data[i].equals(""))
 		count++;
 	}
 	return count;
     }
 
-    public int get(int index){
+    public String get(int index){
 	return data[index];
     }
 
-    public int set(int index,int i){
-	int old=data[index];
-	data[index]=i;
+    public String set(int index,String s){
+	String old=data[index];
+	data[index]=s;
 	return old;
     }
 
-    public int remove (int index){
-	int old=data[index];
-	data[index]=0;
+    public String remove (int index){
+	String old=data[index];
+	String[] temp=new String[data.length-1];
+	for(int k=0;k<index;k++){
+	    temp[k]=data[k];
+	}
+	data=temp;
+	for (int i=index+1;i<data.length;i++){
+	    data[i-1]=data[i];
+	}
+	last--;
 	return old;
     }
-    */
+
     public static void main(String[] args){
 	SuperArray a=new SuperArray();
 	a.add("banana");
-	a.test();
-	a.add("apple");
-	a.test();
-	a.add("carmelo");
-	a.test();
+	a.add("pear");
+	a.add("anaconda");
 	a.add("dog");
-	a.test();
 	a.add("applesauce");
-	a.test();
-	a.add("bandana");
-	a.test();
-	a.add("car");
-	a.test();
+	a.add("truck");
+	a.add("boat");
 	a.add("cat");
 	a.test();
 	a.ssort();

@@ -4,11 +4,15 @@ public class OrderedSuperArray extends SuperArray {
     public String[] data;
     public int last;
 
-    public OrderedSuperArray() {
-	super();
+    public OrderedSuperArray(){
+	last=0;
+	data=new String[1];
+	for(int i=0; i<data.length;i++){
+	    data[i]="";
+	}
     }
     
-        public boolean add(String s){
+    public boolean add(String s){
 	if (last==0){
 	    data[0]=s;
 	    last++;
@@ -42,6 +46,12 @@ public class OrderedSuperArray extends SuperArray {
 	}
     }
 
+    public String set(int index, String s){
+	String old=remove(index);
+	add(s);
+	return old;
+    }
+
     public static void main(String[] args) {
 	OrderedSuperArray o = new OrderedSuperArray();
 	o.add("dino");
@@ -50,6 +60,8 @@ public class OrderedSuperArray extends SuperArray {
 	o.add("pickle");
 	o.add("reptile");
 	o.add("ant");
+	o.test();
+	o.set(0,"crab");
 	o.test();
     }
 
