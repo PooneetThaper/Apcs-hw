@@ -1,5 +1,7 @@
+import java.util.Arrays;
+
 public class SuperArray{
-    private String[] data;//should be object[]
+    private String[] data,copy;//should be object[]
     private int last;
 
     public SuperArray(){
@@ -39,6 +41,7 @@ public class SuperArray{
 	    last++;
 	    return true;
 	}
+
     }
 
     public void isort() {
@@ -160,18 +163,22 @@ public class SuperArray{
 	return old;
     }
 
+    public void backup(){
+	copy=data;
+    }
+
+    public void retrieve(){
+	data=copy;
+	test();
+    }
+
+    public void in(){
+	Arrays.sort(data);
+	//if you want to sort only a portion, do Arrays.sort(data,0,n)
+    }
+
     public static void main(String[] args){
-	SuperArray a=new SuperArray();
-	a.add("banana");
-	a.add("pear");
-	a.add("anaconda");
-	a.add("dog");
-	a.add("applesauce");
-	a.add("truck");
-	a.add("boat");
-	a.add("cat");
-	a.test();
-	a.ssort();
-	a.test();
+	String [] words= {"apple","pickle","pear","banana","racoon","swiggety", "main", "angstrom", "computer", "java", "lian", "victor", "project", "lenovo", "mouse", "wire", "shirt", "facebook", "google", "light", "roof", "floor", "book", "closet", "clock", "flag", "shoe"};
+	SuperArray a=new SuperArray(20);
     }
 }
