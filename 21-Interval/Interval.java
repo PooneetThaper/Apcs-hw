@@ -124,3 +124,42 @@ a class that implements an interface must define all methods in the interface
 
 you can only extend one class but you can implement multiple interfaces
  */
+
+
+/*
+  12/11/14
+
+  Searching
+
+  Search(ArrayList<Character> A, String name)
+  Search(int[] a, int value)
+
+  options:
+  1 send in string with name
+
+  Search(ArrayList<Character> A, "Fred")
+
+  2 send in an instance of class with name set
+
+  Character c = new Character("Fred")
+  Search(ArrayList<Character>, c)
+
+  
+  
+  -loops through the array until we find element
+  or runs out of spaces (Linear Search)
+  |A|.............|D|
+
+  -if list is sorted, you can do better (binary search)
+  sorted from 0-n
+
+  mid=n/2;
+  -if a[mid] is what we wont, we're done
+  -else if what we want < a[mid] then h=mid-1
+  -else then search from mid+1 to n (l=mid+1)
+
+  Homework:
+    make a class thats comparable
+    make Comparable[] the parameter
+    make lsearch, bsearch, and rbsearch (recursive)
+*/
