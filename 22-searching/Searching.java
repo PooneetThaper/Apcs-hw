@@ -109,3 +109,10 @@ public class Searching implements Comparable{
 }
 
 
+/*
+  binary search has a speed of log(base 2) n
+  lg n= log(base 2)n
+
+  linear subtracts data that doesnt fit
+  binear divides data, throws out more
+ */
