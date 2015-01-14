@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class GUI1 extends JFrame{
+public class GUI2 extends JFrame implements ActionListener{
 
     private Container pane;
     private JButton b1,b2;
@@ -9,7 +10,23 @@ public class GUI1 extends JFrame{
     private JTextArea text;
     private JPanel canvas;
 
-    public GUI1(){
+    private class Kew implements KeyListener{
+	public void keyPressed(KeyEvent e){};
+	public void keyReleased(KeyEvent e){};
+	public void keyTyped(KeyEvent e){};
+    }
+
+    public void actionPerformed(ActionEvent e){
+	if (e.getSource() == b1){
+	    System.out.println("You clicked : Click me");
+	    System.out.println("In the test box:"+text.getText());
+	}else if (e.getSource() == b2){
+	    System.out.println("Shutting down");
+	    System.exit(0);
+	}
+    }
+    
+    public GUI2(){
 	setTitle("Hi");
 	setSize(600,500);
 	setLocation(100,100);
@@ -23,8 +40,10 @@ public class GUI1 extends JFrame{
 	pane.add(l);
 	b1 = new JButton("button");
 	pane.add(b1);
+	b1.addActionListener(this);
 	b2 = new JButton("exit");
 	pane.add(b2);
+	b2.addActionListener(this);
 	text=new JTextArea();
 	text.setColumns(50);
 	text.setRows(10);
@@ -32,7 +51,7 @@ public class GUI1 extends JFrame{
 
 	canvas = new JPanel();
 	canvas.setPreferredSize(new Dimension(300,300));
-	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+	canvas.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	pane.add(canvas);
 	
 
@@ -44,7 +63,7 @@ public class GUI1 extends JFrame{
     }
     
     public static void main(String[] args){
-	GUI1 f=new GUI1();
+	GUI2 f=new GUI2();
 	f.setVisible(true);
     }
     
